@@ -5,7 +5,7 @@ module Api
     def index
       @todo_lists = TodoList.all
 
-      respond_to :json
+      render json: @todo_lists
     end
 
     # GET /api/todolists/1
@@ -38,13 +38,13 @@ module Api
 
     # DELETE /api/todolists/1
     def destroy
-      @todo_list = TodoList.find_by(id: params[:id])
+      @todo_list = TodoList.find(params[:id])
 
       if @todo_list.nil?
-        render json: { error: 'Todo list not found' }, status: :ok
+        render json: { error: 'Todo list not found' }, status: :not_found
       else
         @todo_list.destroy
-        render json: { message: 'Todo list deleted successfully' }, status: :no_content
+        render json: { message: 'Todo list deleted successfully' }, status: :ok
         
       end
     end    
