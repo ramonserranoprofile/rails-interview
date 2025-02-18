@@ -28,7 +28,7 @@ rails_interview_test
 /tmp/storage/*
 !/tmp/storage/
 !/tmp/storage/.keep
-
+/vendor/bundle
 /public/assets
 
 # Ignore master key for decrypting credentials and more.
